@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EVE Glove — Landing</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0f1724;
+      --muted:#6b7280;
+      --primary:#1860e6; /* main blue */
+      --accent:#0b5ed7;
+      --card:#f8fafc;
+      --radius:18px;
+      --container:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      margin:0;
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+
+    /* NAV */
+    header{
+      position:sticky;top:0;background:rgba(255,255,255,0.9);backdrop-filter:blur(4px);
+      z-index:30;border-bottom:1px solid rgba(15,23,36,0.04);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{font-family:Poppins;font-weight:700;font-size:22px;color:var(--text)}
+    nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;align-items:center}
+    nav li{font-weight:600;color:var(--text)}
+    .btn-outline{
+      border:2px solid var(--primary); padding:10px 18px;border-radius:40px;font-weight:600;color:var(--primary);
+      background:transparent;
+    }
+    .btn-solid{
+      background:var(--primary);color:#fff;padding:10px 18px;border-radius:40px;font-weight:700;border:none;
+      box-shadow:0 6px 18px rgba(24,96,230,0.18);
+    }
+
+    /* HERO */
+    .hero{padding:80px 0 40px}
+    .hero-grid{display:grid;grid-template-columns:1fr 520px;align-items:center;gap:48px}
+    .hero h1{font-family:Poppins;font-size:56px;line-height:1.02;margin:0 0 18px}
+    .hero p.lead{color:var(--muted);max-width:560px;font-size:18px}
+    .hero .hero-ctas{margin-top:28px;display:flex;gap:12px;align-items:center}
+    .phone-mockups{position:relative;height:460px;display:flex;align-items:center;justify-content:center}
+    .phone{
+      width:320px;height:620px;background:#111;border-radius:34px;box-shadow:0 30px 80px rgba(2,6,23,0.15);
+      transform:rotate(-18deg);position:absolute;right:40px;overflow:hidden;display:flex;align-items:center;justify-content:center;
+    }
+    .phone img{width:110%;height:auto;display:block;transform:translateY(6%)}
+    .phone.phone-2{transform:rotate(8deg);right:-40px;width:360px;height:700px;z-index:2}
+    .phone.phone-1{left:40px;transform:rotate(-26deg);z-index:1}
+
+    /* Features row */
+    .features{padding:48px 0}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:36px}
+    .feature{
+      text-align:center;padding:20px;border-radius:14px;background:linear-gradient(180deg, rgba(8,28,80,0.02), rgba(255,255,255,0.02));
+    }
+    .feature .icon{width:68px;height:68px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px;background:#f3f8ff;border:1px solid rgba(24,96,230,0.08)}
+    .feature h4{margin:0;font-size:20px}
+    .feature p{color:var(--muted);margin-top:8px;font-size:15px}
+
+    /* Blue immersion section */
+    .immersion{background:linear-gradient(135deg,#0b5ed7 0%, #1f7cf1 100%);color:#fff;padding:72px 0;border-radius:24px;margin:42px 0}
+    .immersion .inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px}
+    .immersion h2{font-size:40px;margin:0 0 12px;text-align:center}
+    .immersion p{margin:0 0 26px;max-width:560px;color:rgba(255,255,255,0.9)}
+    .immersion .cols{display:flex;gap:16px;flex-direction:column}
+    .info{background:transparent;padding:8px 0}
+
+    /* About + two-column sections */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px;padding:72px 0}
+    .about .tag{display:inline-block;background:#e8faf1;color:#0a7e4a;padding:8px 14px;border-radius:48px;font-weight:600;margin-bottom:12px}
+
+    /* Testimonials */
+    .testimonials{padding:60px 0}
+    .test-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .test{background:#fff;padding:22px;border-radius:10px;box-shadow:0 10px 30px rgba(15,23,36,0.04)}
+    .stars{color:#ff9b1a;margin-bottom:8px}
+    .test p{color:var(--muted);font-size:15px}
+
+    /* FAQ */
+    .faq{padding:60px 0}
+    .accordion{max-width:900px;margin:20px auto}
+    .acc-item{background:#fff;border-radius:8px;border:1px solid rgba(15,23,36,0.04);margin-bottom:14px;overflow:hidden}
+    .acc-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer}
+    .acc-head h4{margin:0;font-size:16px}
+    .acc-body{padding:18px 20px;border-top:1px solid rgba(15,23,36,0.02);display:none;color:var(--muted)}
+
+    /* Team */
+    .team{padding:64px 0}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;align-items:center}
+    .person{background:transparent;padding:10px}
+
+    /* Footer */
+    footer{padding:60px 0;border-top:1px solid rgba(15,23,36,0.04)}
+    .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start}
+    .socials{display:flex;gap:14px;margin-top:18px}
+    .socials a{display:inline-flex;width:44px;height:44px;border-radius:50%;background:#efefef;align-items:center;justify-content:center;color:#8b8f95}
+
+    /* Responsive */
+    @media (max-width:1100px){
+      .hero-grid{grid-template-columns:1fr 420px}
+      .phone{transform:none;position:static;width:240px;height:420px}
+      .phone.phone-2{order:2}
+      .phone.phone-1{order:1}
+    }
+    @media (max-width:880px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero h1{font-size:36px}
+      .phone-mockups{height:340px;margin-top:20px}
+      .feature-grid{grid-template-columns:repeat(1,1fr)}
+      .immersion .inner{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .test-grid{grid-template-columns:repeat(2,1fr)}
+      .team-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:480px){
+      .test-grid{grid-template-columns:1fr}
+      .phone{width:220px;height:380px}
+      .hero h1{font-size:28px}
+    }
+
+    /* tiny helpers */
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+    .mb-8{margin-bottom:8px}
+    .mt-6{margin-top:18px}
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="container nav">
+      <div class="brand">EVE Glove</div>
+
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#service">Service</a></li>
+          <li><a href="#testimonials">Testimonial</a></li>
+          <li><button class="btn-outline" style="margin-left:14px">Download Now</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>EVE Glove: Control<br>at Your Fingertips</h1>
+          <p class="lead">Experience seamless control and unparalleled precision with EVE Glove. Revolutionizing interaction — your gateway to immersive digital experiences.</p>
+
+          <div class="hero-ctas">
+            <button class="btn-solid">Download App</button>
+            <button class="btn-outline">Order Now</button>
+          </div>
+
+          <div class="features" id="features">
+            <div class="feature-grid">
+              <div class="feature">
+                <div class="icon">★</div>
+                <h4>Easy Setup</h4>
+                <p>Download the Windows application for effortless installation — start in minutes.</p>
+              </div>
+              <div class="feature">
+                <div class="icon">⚙</div>
+                <h4>Full Control</h4>
+                <p>Master EVE Glove with comprehensive tutorials and customization options.</p>
+              </div>
+              <div class="feature">
+                <div class="icon">∞</div>
+                <h4>Open Source</h4>
+                <p>Explore our code on GitHub. Contribute, customize, and enhance the platform.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phones image area -->
+        <div class="phone-mockups" aria-hidden="true">
+          <!-- Replace these src with your phone images. Two overlapping phone elements -->
+          <div class="phone phone-1">
+            <!-- phone 1 - left (replace src with local file or hosted url) -->
+            <img src="assets/phone-left.jpg" alt="phone left - replace path" />
+          </div>
+          <div class="phone phone-2">
+            <!-- phone 2 - right -->
+            <img src="assets/phone-right.jpg" alt="phone right - replace path" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMMERSION / Blue section -->
+    <section class="immersion">
+      <div class="container inner">
+        <div class="center">
+          <h2>Experience Total Immersion</h2>
+          <p> Dive into digital worlds with EVE Glove. Feel every interaction, every movement, and every sensation for ultimate immersion.</p>
+        </div>
+
+        <div class="cols">
+          <div class="info">
+            <h4 class="mb-8">Precision Tracking</h4>
+            <p class="muted">Experience unparalleled accuracy with EVE Glove's advanced tracking — every movement is captured.</p>
+          </div>
+          <div class="info">
+            <h4 class="mb-8">Universal Compatibility</h4>
+            <p class="muted">Seamlessly integrates with platforms and applications for consistent performance across your favorite software.</p>
+          </div>
+          <div class="info">
+            <h4 class="mb-8">Haptic Feedback</h4>
+            <p class="muted">Feel realistic sensations that enhance immersion and control.</p>
+          </div>
+          <div class="info">
+            <h4 class="mb-8">Wireless Freedom</h4>
+            <p class="muted">Enjoy unrestricted movement with reliable wireless connectivity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / Two column -->
+    <section class="two-col about" id="service">
+      <div>
+        <span class="tag">Our Mission</span>
+        <h2>About EVE Glove Inc.</h2>
+        <p class="muted">EVE Glove Inc. is revolutionizing digital interaction with innovative glove technology for seamless control and immersive experiences.</p>
+
+        <div style="display:flex;gap:18px;margin-top:28px">
+          <div style="max-width:220px;">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="width:44px;height:44px;border-radius:12px;background:#f2f8ff;display:flex;align-items:center;justify-content:center">⌁</div>
+              <div>
+                <strong>Easy Install</strong>
+                <div class="muted" style="font-size:14px">Install the Windows application and start in minutes.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="max-width:220px;">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="width:44px;height:44px;border-radius:12px;background:#f2f8ff;display:flex;align-items:center;justify-content:center">⚙</div>
+              <div>
+                <strong>Open Source</strong>
+                <div class="muted" style="font-size:14px">Contribute and customize via our GitHub repo.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:26px">
+          <button class="btn-solid">Get Started →</button>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:center;align-items:center">
+        <!-- About image - replace with your screenshot or phone image -->
+        <img src="assets/about-side.jpg" alt="about" style="max-width:420px;border-radius:18px;box-shadow:0 20px 50px rgba(15,23,36,0.06)" />
+      </div>
+    </section>
+
+    <!-- Solutions (two-column reversed) -->
+    <section class="two-col" style="padding-top:8px">
+      <div style="display:flex;justify-content:center;align-items:center">
+        <img src="assets/solutions-phone.jpg" alt="solutions" style="max-width:420px;border-radius:18px;box-shadow:0 20px 50px rgba(15,23,36,0.06)" />
+      </div>
+      <div>
+        <span class="tag">Our Solutions</span>
+        <h2>Explore Our Innovative EVE Glove Solutions</h2>
+        <p class="muted">EVE Glove offers cutting-edge glove technology, customizable for many applications — gaming, productivity, accessibility, and more.</p>
+
+        <div style="display:flex;gap:22px;margin-top:20px">
+          <div>
+            <div style="width:48px;height:48px;border-radius:12px;background:#f2f8ff;display:flex;align-items:center;justify-content:center">⌁</div>
+            <strong>Seamless Control</strong>
+            <div class="muted">Experience intuitive control with EVE Glove.</div>
+          </div>
+
+          <div>
+            <div style="width:48px;height:48px;border-radius:12px;background:#f2f8ff;display:flex;align-items:center;justify-content:center">✦</div>
+            <strong>Total Immersion</strong>
+            <div class="muted">Dive into digital worlds with EVE Glove.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+      <div class="center">
+        <h2>Customer Love to Say</h2>
+        <p class="muted">Real feedback from users enjoying EVE Glove.</p>
+      </div>
+
+      <div style="margin-top:32px" class="test-grid">
+        <div class="test">
+          <div class="stars">★★★★★</div>
+          <p>"EVE Glove has transformed my workflow! Precision and control are unmatched."</p>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:12px">
+            <img src="assets/avatar1.jpg" style="width:46px;height:46px;border-radius:50%" alt="Jane" />
+            <div><strong>Jane Doe</strong><div class="muted" style="font-size:13px">Verified customer</div></div>
+          </div>
+        </div>
+
+        <div class="test">
+          <div class="stars">★★★★★</div>
+          <p>"As a developer, the open-source nature is fantastic. I've customized it for my needs."</p>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:12px">
+            <img src="assets/avatar2.jpg" style="width:46px;height:46px;border-radius:50%" alt="Mike" />
+            <div><strong>Mike Brown</strong><div class="muted" style="font-size:13px">Verified customer</div></div>
+          </div>
+        </div>
+
+        <div class="test">
+          <div class="stars">★★★★★</div>
+          <p>"Setting up EVE Glove was a breeze, and the tutorials are super helpful. Highly recommend!"</p>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:12px">
+            <img src="assets/avatar3.jpg" style="width:46px;height:46px;border-radius:50%" alt="Emily" />
+            <div><strong>Emily White</strong><div class="muted" style="font-size:13px">Verified customer</div></div>
+          </div>
+        </div>
+
+        <div class="test">
+          <div class="stars">★★★★★</div>
+          <p>"The haptic feedback is incredible! EVE Glove is a game-changer."</p>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:12px">
+            <img src="assets/avatar4.jpg" style="width:46px;height:46px;border-radius:50%" alt="John" />
+            <div><strong>John Smith</strong><div class="muted" style="font-size:13px">Verified customer</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="center">
+        <h2>FAQ Section</h2>
+        <p class="muted">Find answers to frequently asked questions about EVE Glove and its features.</p>
+      </div>
+
+      <div class="accordion" role="list">
+        <div class="acc-item">
+          <div class="acc-head">
+            <h4>What is EVE?</h4>
+            <div class="chev">▾</div>
+          </div>
+          <div class="acc-body">EVE Glove is an advanced wearable that turns hand gestures into precise digital input — designed for immersive control and haptic feedback.</div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-head">
+            <h4>How to install?</h4>
+            <div class="chev">▾</div>
+          </div>
+          <div class="acc-body">Download the Windows app from our download page, follow the installer steps, and pair the glove via Bluetooth or USB.</div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-head">
+            <h4>Is it ergonomic?</h4>
+            <div class="chev">▾</div>
+          </div>
+          <div class="acc-body">Yes — EVE Glove is designed with ergonomic materials and adjustable straps to minimize fatigue.</div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-head">
+            <h4>Is it wireless?</h4>
+            <div class="chev">▾</div>
+          </div>
+          <div class="acc-body">Yes, EVE supports wireless connectivity and offers a wired fallback for low-latency use cases.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+      <div class="center">
+        <h2>Meet Our Experts</h2>
+        <p class="muted">Our team of innovators and engineers dedicated to pushing the boundaries of digital interaction.</p>
+      </div>
+
+      <div style="margin-top:28px" class="team-grid">
+        <div class="person center">
+          <img src="assets/expert1.jpg" alt="expert" style="width:160px;height:160px;border-radius:18px;object-fit:cover;box-shadow:0 20px 40px rgba(2,6,23,0.06)"/>
+          <h4 style="margin-top:12px">Alex Turner</h4>
+          <div class="muted">Lead Engineer</div>
+        </div>
+
+        <div class="person center">
+          <img src="assets/expert2.jpg" alt="expert" style="width:160px;height:160px;border-radius:18px;object-fit:cover;box-shadow:0 20px 40px rgba(2,6,23,0.06)"/>
+          <h4 style="margin-top:12px">Maya Lin</h4>
+          <div class="muted">Product Designer</div>
+        </div>
+
+        <div class="person center">
+          <img src="assets/expert3.jpg" alt="expert" style="width:160px;height:160px;border-radius:18px;object-fit:cover;box-shadow:0 20px 40px rgba(2,6,23,0.06)"/>
+          <h4 style="margin-top:12px">Ryan Cole</h4>
+          <div class="muted">Software Lead</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="padding-top:22px;padding-bottom:22px">
+      <div style="display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap">
+        <div style="max-width:320px">
+          <div style="font-family:Poppins;font-size:22px;font-weight:700">EVE Glove</div>
+          <p class="muted" style="margin-top:12px;max-width:280px">Experience seamless control with EVE Glove's intuitive application.</p>
+
+          <div class="socials" aria-label="social links">
+            <a href="#" title="facebook">f</a>
+            <a href="#" title="twitter">t</a>
+            <a href="#" title="linkedin">in</a>
+            <a href="#" title="instagram">ig</a>
+          </div>
+        </div>
+
+        <div class="footer-grid" style="flex:1">
+          <div>
+            <h4>Product</h4>
+            <ul class="muted" style="list-style:none;padding:0;margin-top:12px">
+              <li style="margin-bottom:12px"><a href="#">Home</a></li>
+              <li style="margin-bottom:12px"><a href="#">Features</a></li>
+              <li style="margin-bottom:12px"><a href="#">Service</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Quick Links</h4>
+            <ul class="muted" style="list-style:none;padding:0;margin-top:12px">
+              <li style="margin-bottom:12px"><a href="#">Privacy Policy</a></li>
+              <li style="margin-bottom:12px"><a href="#">Terms of use</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Extra Links</h4>
+            <ul class="muted" style="list-style:none;padding:0;margin-top:12px">
+              <li style="margin-bottom:12px"><a href="#">Career</a></li>
+              <li style="margin-bottom:12px"><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid rgba(15,23,36,0.04);margin-top:20px;padding-top:18px;text-align:center;color:var(--muted);font-weight:600">
+        Designed with Codedesign.ai
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS: interactions -->
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.acc-head').forEach(head=>{
+      head.addEventListener('click', ()=> {
+        const item = head.parentElement;
+        const body = item.querySelector('.acc-body');
+        const open = body.style.display === 'block';
+        // close other items
+        document.querySelectorAll('.acc-body').forEach(b=>b.style.display='none');
+        if(open){
+          body.style.display = 'none';
+        }else{
+          body.style.display = 'block';
+        }
+      });
+    });
+
+    // Simple smooth scroll for nav anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+
+    // Optional: swap phone images if provided via drag and drop (demo helper)
+    // If you want to support file input replacement in future, you can add an input and this code will set src.
+  </script>
+</body>
+</html>
