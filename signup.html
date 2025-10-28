@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign Up - EVE Glove</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="image/EVE Glove Logo Tab.png"/>
+</head>
+<body class="signup-page">
+  <div class="login-container">
+    <div class="login-box">
+      <div class="login-header">
+        <img src="image/EVE Glove Logo Tab.png" alt="EVE Glove Logo" class="login-logo">
+        <h2>Create Account</h2>
+      </div>
+
+      <p id="signupWarning" class="warning-text"></p>
+
+      <input type="text" id="signupUsername" placeholder="Username" />
+      <input type="email" id="signupEmail" placeholder="Email" />
+     <div class="password-container">
+        <input type="password" id="signupPassword" placeholder="Password" />
+        <button type="button" class="toggle-password" data-target="signupPassword">👁</button>
+      </div>
+
+      <div class="password-container">
+        <input type="password" id="signupConfirm" placeholder="Confirm Password" />
+        <button type="button" class="toggle-password" data-target="signupConfirm">👁</button>
+      </div>
+
+       <div class="confirmation-container">
+        <label>
+          <input type="checkbox" id="signupConfirmBox"> I confirm that my details are correct
+        </label>
+      </div>
+
+      <button id="signupSubmit" class="btn-solid">Sign Up</button>
+
+      <div class="or-divider"><span>or</span></div>
+
+      <button class="google-login">
+        <img src="image/google-icon.png" alt="Google Icon" class="google-icon">
+        Continue with Google
+      </button>
+
+      <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+  </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
