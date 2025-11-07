@@ -1,0 +1,87 @@
+#tutorial {
+  padding-bottom: 8rem; 
+  scroll-margin-top: 100px; 
+}
+
+/* --- Header --- */
+.tutorial-header {
+  margin-top: 4rem;     
+  margin-bottom: 4rem;  
+  text-align: center;
+}
+
+.tutorial-header h1 {
+  font-size: 2rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* --- Steps Layout --- */
+.tutorial-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Fix extra spacing for header inside tutorial-steps */
+.tutorial-steps .tutorial-header {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* --- Each Step Card --- */
+.tutorial-step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(180deg, rgba(8, 28, 80, 0.03), rgba(255, 255, 255, 0.03));
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tutorial-step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(138, 66, 255, 0.4);
+}
+
+.tutorial-step.reverse {
+  flex-direction: row-reverse;
+}
+
+/* --- Text Section --- */
+.tutorial-text {
+  flex: 1;
+}
+
+.tutorial-text h3 {
+  display: inline-block;
+  background: #0f1730;
+  color: var(--text);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.tutorial-text p {
+  font-size: 1rem;
+  color: var(--muted, #999);
+  line-height: 1.6;
+}
+
+/* --- Media (Image / Video) --- */
+.tutorial-media {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.tutorial-media img,
+.tutorial-media video {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,209 @@
+:root {
+  --bg: radial-gradient(circle at center, #040619 0%, #070b24 60%, #0a0f32 100%);
+  --text: #f5f7ff;
+  --muted: #a1a8c7;
+  --primary: #2a7fff;
+  --accent: #8a42ff;
+  --card: rgba(255, 255, 255, 0.05);
+  --radius: 18px;
+  --container: 1200px;
+}
+
+body {
+  font-family: "Inter", system-ui;
+  color: var(--text);
+  margin: 0;
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+html {
+  overflow-y: scroll; 
+  scrollbar-gutter: stable;
+}
+
+a {
+  text-decoration:none;color:inherit
+}
+
+.container {
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 24px
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(7, 11, 36, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 30;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  height: 64px; 
+  box-sizing: border-box;
+}
+
+.brand {
+  font-family: Poppins;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text);
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.brand:hover {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: flex;
+  align-items: center;
+  height: 100%; 
+}
+
+nav ul li a {
+  position: relative;
+  padding-bottom: 2px;  
+  transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0; 
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: var(--primary);
+}
+
+footer {
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+  background: transparent;
+}
+
+.small-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  font-size: 14px;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.muted {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.center {
+  text-align:center
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 15px rgba(42, 127, 255, 0.4),
+      0 0 30px rgba(138, 66, 255, 0.3);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(42, 127, 255, 0.8), 0 0 60px rgba(138, 66, 255, 0.6);
+    transform: translateY(-2px);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(42, 127, 255, 0.4), 0 0 30px rgba(138, 66, 255, 0.3);
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+
+@keyframes featureFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .features-wrapper {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-wrapper {
+    padding: 0 30px;
+  }
+}
+
+
+
+
